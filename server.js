@@ -172,7 +172,7 @@ async function generalAgent(userMessage) {
 Answer questions about fashion, styling, sizes, or store policies.
 Keep replies short (2-3 sentences). Store hours: 9am-9pm Mon-Sat.
 Return policy: 7-day easy returns. Free delivery above Rs.1500.`;
-  return await callClaude([{ role: "user", content: userMessage }], systemPrompt);
+return await callClaude([{ role: "user", content: userMessage }], systemPrompt);
 }
 
 async function sendWhatsAppReply(to, message) {
