@@ -1,8 +1,3 @@
-bash
-
-cat /home/claude/drape-store/server.js
-Output
-
 require("dotenv").config();
 const express = require("express");
 const axios = require("axios");
