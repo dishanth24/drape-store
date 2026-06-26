@@ -7,8 +7,8 @@ const path = require("path");
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
-app.use(express.urlencoded({ extended: false })); 
 
 const PORT = process.env.PORT || 3000;
 
@@ -83,7 +83,7 @@ Rules:
     : [{ role: "user", content: `I'm looking at the ${product.name}.` }];
 
   try {
-    const reply = await callGroq(messages, systemPrompt);
+    const reply = await callClaude(messages, systemPrompt);
     res.json({ reply, product, availableSizes: availableSizes.split(", "), lowStock });
   } catch (err) {
     console.error("Groq error:", err.response?.data || err.message);
@@ -138,7 +138,7 @@ Available products:
 ${PRODUCTS.map(p => `• ${p.name} (${p.cat}) — Rs.${p.price.toLocaleString()} [${p.badge || "available"}]`).join("\n")}
 Help the user find the right product. Keep reply under 5 lines.
 End with: "Reply with the product name to order!"`;
-  return await callGroq([{ role: "user", content: userMessage }], systemPrompt);
+  return await callClaude([{ role: "user", content: userMessage }], systemPrompt);
 }
 
 async function orderAgent(from, userMessage) {
@@ -172,7 +172,7 @@ async function generalAgent(userMessage) {
 Answer questions about fashion, styling, sizes, or store policies.
 Keep replies short (2-3 sentences). Store hours: 9am-9pm Mon-Sat.
 Return policy: 7-day easy returns. Free delivery above Rs.1500.`;
-  return await callGroq([{ role: "user", content: userMessage }], systemPrompt);
+  return await callClaude([{ role: "user", content: userMessage }], systemPrompt);
 }
 
 async function sendWhatsAppReply(to, message) {
