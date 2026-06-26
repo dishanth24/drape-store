@@ -28,7 +28,7 @@ const ORDERS = [];
 let orderCounter = 1000;
 
 // ─── Groq AI Call ──────────────────────────────────────────────────────────────
-async function callGroq(messages, systemPrompt) {
+async function callClaude(messages, systemPrompt) {
   const response = await axios.post(
     "https://api.groq.com/openai/v1/chat/completions",
     {
@@ -36,13 +36,13 @@ async function callGroq(messages, systemPrompt) {
       max_tokens: 500,
       messages: [
         { role: "system", content: systemPrompt },
-        ...messages
+        ...messages,
       ],
     },
     {
       headers: {
         "Authorization": `Bearer ${process.env.GROQ_API_KEY}`,
-        "Content-Type": "application/json",
+        "content-type": "application/json",
       },
     }
   );
