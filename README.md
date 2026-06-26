@@ -24,7 +24,7 @@ A complete AI-powered clothing store with:
 
 ### Step 1 — Get your API keys (all free)
 
-**Claude API key**
+**Groq API key**
 1. Go to https://console.anthropic.com
 2. Sign up → API Keys → Create Key
 3. Copy the key (starts with `sk-ant-`)
@@ -46,11 +46,11 @@ A complete AI-powered clothing store with:
 
 **Set environment variables in Railway dashboard:**
 ```
-CLAUDE_API_KEY      = sk-ant-your-actual-key
-TWILIO_SID          = ACxxxxxxxxx
-TWILIO_AUTH_TOKEN   = your_token
+GROQ_API_KEY           = your groq key (gsk_xxx...)
+TWILIO_SID             = XXXXXXXXXXXXXXXXXXXXXXX
+TWILIO_AUTH_TOKEN      = your auth token
 TWILIO_WHATSAPP_NUMBER = +14155238886
-VERIFY_TOKEN        = any_secret_word
+VERIFY_TOKEN           = drape2024
 ```
 
 5. Railway gives you a public URL like: `https://drape-store-production.up.railway.app`
